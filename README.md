@@ -2,7 +2,7 @@
 
 This template includes a basic next app including chakra ui with basic theme set up.
 
-## Absolute routes 🚶‍♂️
+## 🚶‍♂️Absolute routes
 -----------------
 Absolute routes are defined inside the jsconfig.json, default modules [atoms, molecules, organisms, imgs, utils, store]
 
@@ -32,7 +32,7 @@ import MyComponent from "@/molecules/MyComponent.jsx"
 
 </br>
 
-## 📁Folder structure
+## 📁Folder structure 
 -----------------
 
 ```
@@ -63,4 +63,5 @@ The components folder uses the atomic approach. Dividing components into three c
 <br>
 
 ## 💅 Theme
+-------
 Inside the theme.js file there are defined the dark and light theme
