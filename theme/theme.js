@@ -1,6 +1,14 @@
 import { extendTheme } from "@chakra-ui/react";
 
 export const darkTheme = extendTheme({
+  styles: {
+    global: {
+      body: {
+        color: "#ffffff",
+        background: "#0A131F",
+      },
+    },
+  },
   colors: {
     brand: {
       bg: "#0A131F",
@@ -9,10 +17,22 @@ export const darkTheme = extendTheme({
       light: "#A8DADC",
       accent: "#E63946",
     },
+    text: {
+      main: "#ffffff",
+      hover: "#000",
+    },
   },
 });
 
 export const lightTheme = extendTheme({
+  styles: {
+    global: {
+      body: {
+        color: "black",
+        background: "#ffffff",
+      },
+    },
+  },
   colors: {
     brand: {
       bg: "#ffffff",
@@ -20,6 +40,10 @@ export const lightTheme = extendTheme({
       main: "#457B9D",
       light: "#A8DADC",
       accent: "#E63946",
+    },
+    text: {
+      main: "#000000",
+      hover: "#457B9D",
     },
   },
 });

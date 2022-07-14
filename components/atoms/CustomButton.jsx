@@ -8,7 +8,7 @@ const CustomButton = ({ content, bg, ftColor, hover, ...props }) => {
       bg={bg ? bg : "brand.main"}
       _hover={hover && { bg: "brand.light", color: "black" }}
       _focus={{ border: "none" }}
-      color={ftColor ? ftColor : "white"}
+      color={ftColor}
     >
       {content}
     </Button>

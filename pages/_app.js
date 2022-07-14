@@ -1,18 +1,24 @@
-import "../styles/globals.css";
-import { ChakraProvider } from "@chakra-ui/react";
-import { lightTheme, darkTheme } from "theme/theme";
-import { StoreProvider, useStoreState } from "easy-peasy";
-import store from "@/store/index";
 import Navbar from "@/organisms/navbar/";
 import ThemeProvider from "theme/ThemeProvider";
+import "../styles/globals.css";
+import { AppProvider } from "context/ContextProvider";
+import Head from "next/head";
 function MyApp({ Component, pageProps }) {
   return (
-    <StoreProvider store={store}>
+    <AppProvider>
+      <Head>
+        <title>Techie Blog</title>
+        <meta name="description" content="Tech blog" />
+        <meta
+          name="keywords"
+          content="Programming, technology, code, web development"
+        />
+      </Head>
       <ThemeProvider>
         <Navbar />
         <Component {...pageProps} />
       </ThemeProvider>
-    </StoreProvider>
+    </AppProvider>
   );
 }
 

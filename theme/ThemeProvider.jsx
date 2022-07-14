@@ -1,13 +1,16 @@
-import React from "react";
-import { useStoreState } from "easy-peasy";
+import { useContext } from "react";
 import { darkTheme, lightTheme } from "./theme";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, Box } from "@chakra-ui/react";
+import { AppContext } from "context";
 const ThemeProvider = ({ children }) => {
-  const theme = useStoreState((state) => state.theme.palette);
-  let currentTheme = theme ? lightTheme : darkTheme;
+  const { isDarkTheme } = useContext(AppContext);
   return (
-    <ChakraProvider overflowX={"hidden"} theme={theme ? lightTheme : darkTheme}>
-      {children}
+    <ChakraProvider
+      overflowX={"hidden"}
+      bg="brand.bg"
+      theme={isDarkTheme ? darkTheme : lightTheme}
+    >
+      <Box>{children}</Box>
     </ChakraProvider>
   );
 };

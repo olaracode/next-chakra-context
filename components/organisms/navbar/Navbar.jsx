@@ -1,46 +1,45 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Box,
   Flex,
   Text,
   Button,
-  Link,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
+  Image,
+  Icon,
 } from "@chakra-ui/react";
 import CustomButton from "@/atoms/CustomButton";
 import { faBars, faMoon } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useStoreActions, useStoreState } from "easy-peasy";
-
+import { AppContext } from "context";
 const Navbar = () => {
-  const themeSwitch = useStoreActions((actions) => actions.theme.themeSwitch);
-  const palette = useStoreState((state) => state.theme.palette);
+  const { isDarkTheme, setDarkTheme } = useContext(AppContext);
+  const logo = "/assets/imgs/techielogo.svg";
   return (
     <Box w="100%" bg="brand.card" shadow={"md"}>
       <Flex justify={"space-between"} h={"60px"} mx={"6%"} align="center">
-        <Text as="p" fontSize="16px" cursor="pointer">
-          Super cool logo 😎😎
-        </Text>
+        <Flex justify={"center"} align="center" gap="3">
+          <Image src={logo} h="30px" />
+          <Text
+            as="p"
+            fontSize="16px"
+            cursor="pointer"
+            color={"brand.main"}
+            fontWeight={"bold"}
+          >
+            Techie
+          </Text>
+        </Flex>
         <Flex gap={2} align="center" display={{ base: "none", md: "flex" }}>
-          <Button bg="none" onClick={() => themeSwitch(palette)}>
+          <Button bg="none" onClick={() => setDarkTheme(!isDarkTheme)}>
             <FontAwesomeIcon icon={faMoon} />
           </Button>
-          <CustomButton
-            bg="none"
-            ftColor={"black"}
-            hover={false}
-            content="About"
-          />
-          <CustomButton
-            bg="none"
-            ftColor={"black"}
-            content="Login"
-            hover="true"
-          />
-          <CustomButton hover={true} content="register" />
+          <CustomButton bg="none" hover={false} content="About" />
+          <CustomButton bg="none" content="Login" hover="true" />
+          <CustomButton ftColor={"white"} hover={true} content="register" />
         </Flex>
         <Box display={{ sm: "block", md: "none", lg: "none", xl: "none" }}>
           <Menu>
@@ -50,21 +49,41 @@ const Navbar = () => {
               py="10px"
               px="15px"
               borderRadius="8px"
-              color="brand.main"
             >
               <FontAwesomeIcon icon={faBars} />
             </MenuButton>
-            <MenuList p={1}>
-              <MenuItem borderRadius="8px">
+            <MenuList
+              p={1}
+              py={3}
+              bg={"brand.card"}
+              borderColor="transparent"
+              shadow={"md"}
+            >
+              <MenuItem
+                _hover={{ color: "text.hover" }}
+                borderRadius="8px"
+                onClick={() => setDarkTheme(!isDarkTheme)}
+              >
                 <Flex gap={2} w="100%" align="center">
                   <FontAwesomeIcon icon={faMoon} />
-                  Theme
+                  <Text>Theme</Text>
                 </Flex>
               </MenuItem>
-              <MenuItem borderRadius="8px">About</MenuItem>
-              <MenuItem borderRadius="8px">Login</MenuItem>
-              <MenuItem borderRadius="8px" bg={"brand.main"}>
-                Register
+              <MenuItem _hover={{ color: "text.hover" }} borderRadius="8px">
+                About
+              </MenuItem>
+              <MenuItem _hover={{ color: "text.hover" }} borderRadius="8px">
+                Login
+              </MenuItem>
+              <MenuItem
+                my="3"
+                _hover={{ color: "text.hover" }}
+                borderRadius="8px"
+                bg={"brand.main"}
+              >
+                <Text textAlign={"center"} w="100%">
+                  Register
+                </Text>
               </MenuItem>
             </MenuList>
           </Menu>
